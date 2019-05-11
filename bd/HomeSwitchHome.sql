@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-05-2019 a las 20:35:50
+-- Tiempo de generación: 11-05-2019 a las 20:53:45
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -29,11 +29,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `administradores` (
-  `id_administradore` int(11) NOT NULL,
+  `id_administrador` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `contraseña` varchar(100) NOT NULL
+  `contraseña` varchar(100) NOT NULL,
+  `eliminado` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -50,7 +51,9 @@ CREATE TABLE `clientes` (
   `contrasena` varchar(100) CHARACTER SET latin1 NOT NULL,
   `credito` int(11) NOT NULL,
   `tarjeta` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
-  `vencimiento` varchar(100) COLLATE latin1_spanish_ci NOT NULL
+  `vencimiento` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
+  `eliminado` tinyint(1) DEFAULT NULL,
+  `premium` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- --------------------------------------------------------
@@ -101,16 +104,17 @@ CREATE TABLE `propiedades` (
   `numero` int(11) NOT NULL,
   `foto` text NOT NULL,
   `descripcion` varchar(100) NOT NULL,
-  `nombre` varchar(100) NOT NULL
+  `nombre` varchar(100) NOT NULL,
+  `eliminado` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `propiedades`
 --
 
-INSERT INTO `propiedades` (`id_propiedad`, `provincia`, `localidad`, `calle`, `numero`, `foto`, `descripcion`, `nombre`) VALUES
-(1, 'BUENOS AIRES', 'CHASCOMUS', 'LALALA', 131, '1.jpg', 'ASDASDAS', ''),
-(2, 'SALTA', 'SALTITA', 'PERGAMINO', 3, '1.jpg', 'QWEQWEQW', '');
+INSERT INTO `propiedades` (`id_propiedad`, `provincia`, `localidad`, `calle`, `numero`, `foto`, `descripcion`, `nombre`, `eliminado`) VALUES
+(1, 'BUENOS AIRES', 'CHASCOMUS', 'LALALA', 131, '1.jpg', 'ASDASDAS', '', NULL),
+(2, 'SALTA', 'SALTITA', 'PERGAMINO', 3, '1.jpg', 'QWEQWEQW', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -152,7 +156,7 @@ CREATE TABLE `subasta` (
 -- Indices de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  ADD PRIMARY KEY (`id_administradore`);
+  ADD PRIMARY KEY (`id_administrador`);
 
 --
 -- Indices de la tabla `clientes`
@@ -210,7 +214,7 @@ ALTER TABLE `subasta`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `id_administradore` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
