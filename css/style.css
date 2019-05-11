@@ -12,3 +12,9 @@ textarea{
     height: 250px;
     resize: none;
 }
+
+
+.foto_mostrar{
+    width:100px;
+    height: 100px;
+}
