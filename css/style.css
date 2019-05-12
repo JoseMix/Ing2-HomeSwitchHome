@@ -18,3 +18,7 @@ textarea{
     width:100px;
     height: 100px;
 }
+
+.form_registro input{
+    display:block;
+}
