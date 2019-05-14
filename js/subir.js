@@ -8,7 +8,6 @@ var calle = formulario.calle.value;
 var numero = formulario.numero.value;
 var descripcion = formulario.descripcion.value;
 var parametros ='provincia=' + provincia + '&localidad=' + localidad + '&calle=' + calle + '&numero=' + numero + '&descripcion=' + descripcion;
-console.log(parametros);
 if (provincia == '' || localidad == '' || calle == '' || numero == '' || descripcion == '') {
    alert("Campos vacios");
    event.preventDefault();

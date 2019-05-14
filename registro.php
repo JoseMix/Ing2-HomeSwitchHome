@@ -22,6 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = ltrim(strtoupper($_POST['email']));
 $errores = '';
 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errores .= '<li>Formato de Email no valido</li>';
+  }
+
 if(empty($nombre) or empty($apellido) or empty($email) or empty($password) or empty($password2)){
     $errores .= '<li>Por Favor rellene todos los campos</li>';
 }else {

@@ -14,7 +14,7 @@
 <h1>HomeSWitchHome Pagina Principal</h1>
 
 
-
+<?php echo "Hola " . $_SESSION['nombre'];?>
 
 <a href="cerrar.php">Cerrar Sesion</a>
 

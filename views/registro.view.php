@@ -4,8 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Regístrese en HomeSwitchHome</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<script src="js/registro.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.12.0/validate.min.js"></script>
 <title>Regístrate</title>
 
 </head>
@@ -20,7 +23,7 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">Registro</h4>
-							<form method="POST" class="my-login-validation" novalidate="" name="login" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+							<form method="POST" class="my-login-validation" novalidate="" name="login" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" id="login">
 								<div class="form-group">
 									<label for="nombre">Nombre</label>
 									<input id="nombre" type="text" class="form-control" name="nombre" required autofocus>
@@ -73,7 +76,7 @@
 								</div>
 
 								<div class="form-group m-0">
-									<button type="submit" class="btn btn-primary btn-block" onclick="login.registro()">
+									<button type="submit" class="btn btn-primary btn-block" onclick="registro()">
 										Registrar
 									</button>
 								</div>
@@ -99,16 +102,8 @@
 		</div>
 	</section>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="js/my-login.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-</form>
