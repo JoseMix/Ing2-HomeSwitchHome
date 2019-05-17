@@ -41,8 +41,7 @@ if(empty($nombre) or empty($apellido) or empty($email) or empty($password) or em
     if($resultado != false){
         $errores .= '<li>El nombre de Usuario ya existe</li>';
     }
-    $password = hash('sha512', $password);
-    $password2 = hash('sha512', $password2);
+    
   
     if($password != $password2){
         $errores .= '<li>Las Contraseñas no son Iguales</li>';
