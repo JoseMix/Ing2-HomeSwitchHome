@@ -15,7 +15,7 @@ if (isset($_SESSION['id'])) {
    }
    else{
    	  
-   	  header('Location:listado.php?errorI=Debe ser administrador para realizar esta accion');
+   	  header('Location:detallePropiedad.php?errorI=Debe ser administrador para realizar esta accion');
  	}
 }
 else{

@@ -14,16 +14,7 @@
 <body>
     <div class="contenedor">
     <h1>Propiedades</h1>
-    <?php 
-    if(empty($_GET['errorI'])){
-            $errorI=" ";
-       }
-          else{
-            $errorI=$_GET['errorI'];
-          }
-
-    echo $errorI;
-         ?>
+    
     <section class="propiedades">
         <ul>
         
@@ -36,8 +27,6 @@
                 ' - ' . $propiedad['numero'] . 
                 ' - ' . $propiedad['descripcion'] ?>
         <img src="<?php echo "http://localhost/Ing2-HomeSwitchHome/img/" . $propiedad['foto'];?>" class="foto_mostrar">
-        <a href="bajaPropiedad.php?idpropiedad=<?php echo $propiedad['id_propiedad']?>">ELIMINAR</a>
-        <a href="pujarSubasta.php?idpropiedad=<?php echo $propiedad['id_propiedad']?>">PUJAR</a>
         
         </li>
         

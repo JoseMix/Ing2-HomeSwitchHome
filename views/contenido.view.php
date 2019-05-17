@@ -18,7 +18,7 @@
 
 <a href="cerrar.php">Cerrar Sesion</a>
 <a href="listado.php">LISTADO PROPIEDADES</a>
-<a href="listadopujasbeta.php">subastas </a>
+
 
 
 
