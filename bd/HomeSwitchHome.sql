@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-05-2019 a las 20:53:45
+-- Tiempo de generación: 17-05-2019 a las 16:16:06
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -37,6 +37,13 @@ CREATE TABLE `administradores` (
   `eliminado` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`id_administrador`, `nombre`, `apellido`, `email`, `contraseña`, `eliminado`) VALUES
+(1, 'CARLOS', 'PEREZ', 'PEREZ@GMAIL.COM', '1234', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -48,36 +55,32 @@ CREATE TABLE `clientes` (
   `nombre` varchar(100) CHARACTER SET latin1 NOT NULL,
   `apellido` varchar(100) CHARACTER SET latin1 NOT NULL,
   `email` varchar(100) CHARACTER SET latin1 NOT NULL,
-  `contrasena` varchar(100) CHARACTER SET latin1 NOT NULL,
   `credito` int(11) NOT NULL,
   `tarjeta` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
   `vencimiento` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
   `eliminado` tinyint(1) DEFAULT NULL,
-  `premium` tinyint(1) DEFAULT NULL
+  `premium` tinyint(1) DEFAULT NULL,
+  `contrasena` varchar(200) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `fecha`
+-- Volcado de datos para la tabla `clientes`
 --
 
-CREATE TABLE `fecha` (
-  `id_semana` int(11) NOT NULL,
-  `anio` int(11) NOT NULL,
-  `semana` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `fecha_propiedad`
---
-
-CREATE TABLE `fecha_propiedad` (
-  `idfecha_propiedad` int(100) NOT NULL,
-  `reservado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `clientes` (`id_cliente`, `nombre`, `apellido`, `email`, `credito`, `tarjeta`, `vencimiento`, `eliminado`, `premium`, `contrasena`) VALUES
+(4, 'JOSE', 'PEREZ', 'PEREZ@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(5, 'JOSE', 'GOMEZ', 'GOMEZ@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(6, 'CARLOS', 'PEREZ', 'PEREZ@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(7, 'PEPE', 'CANOVAS', 'CANOVAS@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(8, 'CARLOS', 'MARQUEZ', 'MARQUEZ@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(9, 'MATIAS', 'MILETICH', 'MATI@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(10, 'SADADD', 'DADSDA', 'ASDADAS', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(11, 'LALAL', 'LALALA', 'ALALAL@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(12, 'PRUEBA2', 'APELLIDOPRUEBA', 'ASDSAD@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(13, 'ASDS', 'DSAD', 'ADSASDAS@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(14, 'SDFDS', 'DSFSD', 'SASA@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(15, 'MARIANO', 'MARTINELLI', 'MARIANO@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
+(16, 'PEPE', 'SILVA', 'SILVA@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db');
 
 -- --------------------------------------------------------
 
@@ -87,7 +90,10 @@ CREATE TABLE `fecha_propiedad` (
 
 CREATE TABLE `hotsales` (
   `idhotsale` int(11) NOT NULL,
-  `precio` double NOT NULL
+  `precio` double NOT NULL,
+  `idcliente` int(11) NOT NULL,
+  `inactivo` tinyint(1) NOT NULL DEFAULT '0',
+  `idpropiedad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -102,19 +108,20 @@ CREATE TABLE `propiedades` (
   `localidad` varchar(50) NOT NULL,
   `calle` varchar(50) NOT NULL,
   `numero` int(11) NOT NULL,
-  `foto` text NOT NULL,
-  `descripcion` varchar(100) NOT NULL,
+  `descripcion` text NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `eliminado` tinyint(1) DEFAULT NULL
+  `eliminado` tinyint(1) DEFAULT NULL,
+  `foto` varchar(100) NOT NULL,
+  `capacidad` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `propiedades`
 --
 
-INSERT INTO `propiedades` (`id_propiedad`, `provincia`, `localidad`, `calle`, `numero`, `foto`, `descripcion`, `nombre`, `eliminado`) VALUES
-(1, 'BUENOS AIRES', 'CHASCOMUS', 'LALALA', 131, '1.jpg', 'ASDASDAS', '', NULL),
-(2, 'SALTA', 'SALTITA', 'PERGAMINO', 3, '1.jpg', 'QWEQWEQW', '', NULL);
+INSERT INTO `propiedades` (`id_propiedad`, `provincia`, `localidad`, `calle`, `numero`, `descripcion`, `nombre`, `eliminado`, `foto`, `capacidad`) VALUES
+(1, 'BUENOS AIRES', 'CHASCOMUS', 'LALALA', 131, 'ASDASDAS', '', NULL, '', 0),
+(2, 'SALTA', 'SALTITA', 'PERGAMINO', 3, 'QWEQWEQW', '', NULL, '', 0);
 
 -- --------------------------------------------------------
 
@@ -124,7 +131,9 @@ INSERT INTO `propiedades` (`id_propiedad`, `provincia`, `localidad`, `calle`, `n
 
 CREATE TABLE `pujas` (
   `idpuja` int(11) NOT NULL,
-  `preciopuja` double NOT NULL
+  `importepuja` double NOT NULL,
+  `idcliente` int(11) NOT NULL,
+  `idsubasta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -134,8 +143,11 @@ CREATE TABLE `pujas` (
 --
 
 CREATE TABLE `reservas` (
-  `idreserva` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `idreservas` int(11) NOT NULL,
+  `idcliente` int(11) NOT NULL,
+  `pagado` double NOT NULL,
+  `idpropiedad` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -145,8 +157,25 @@ CREATE TABLE `reservas` (
 
 CREATE TABLE `subasta` (
   `idsubasta` int(11) NOT NULL,
-  `preciobase` double NOT NULL
+  `preciobase` decimal(10,0) NOT NULL,
+  `fechainicio` date NOT NULL,
+  `fechafin` date NOT NULL,
+  `pujaganadora` int(11) DEFAULT NULL,
+  `idpropiedad` int(11) NOT NULL,
+  `inactivo` tinyint(1) NOT NULL DEFAULT '0',
+  `semana` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `subasta`
+--
+
+INSERT INTO `subasta` (`idsubasta`, `preciobase`, `fechainicio`, `fechafin`, `pujaganadora`, `idpropiedad`, `inactivo`, `semana`) VALUES
+(1, '40000', '2040-00-00', '2019-12-30', NULL, 1, 0, 1),
+(2, '40000', '2040-00-00', '2020-01-20', NULL, 1, 0, 4),
+(3, '40000', '2040-00-00', '2020-01-20', NULL, 1, 0, 4),
+(4, '40000', '2019-12-30', '2019-12-31', NULL, 1, 0, 1),
+(5, '10000', '2019-12-02', '2019-12-05', NULL, 1, 0, 49);
 
 --
 -- Índices para tablas volcadas
@@ -165,22 +194,12 @@ ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id_cliente`);
 
 --
--- Indices de la tabla `fecha`
---
-ALTER TABLE `fecha`
-  ADD PRIMARY KEY (`id_semana`);
-
---
--- Indices de la tabla `fecha_propiedad`
---
-ALTER TABLE `fecha_propiedad`
-  ADD PRIMARY KEY (`idfecha_propiedad`);
-
---
 -- Indices de la tabla `hotsales`
 --
 ALTER TABLE `hotsales`
-  ADD PRIMARY KEY (`idhotsale`);
+  ADD PRIMARY KEY (`idhotsale`),
+  ADD KEY `idpropiedad` (`idpropiedad`),
+  ADD KEY `idcliente` (`idcliente`);
 
 --
 -- Indices de la tabla `propiedades`
@@ -192,19 +211,25 @@ ALTER TABLE `propiedades`
 -- Indices de la tabla `pujas`
 --
 ALTER TABLE `pujas`
-  ADD PRIMARY KEY (`idpuja`);
+  ADD PRIMARY KEY (`idpuja`),
+  ADD KEY `idcliente` (`idcliente`),
+  ADD KEY `idsubasta` (`idsubasta`);
 
 --
 -- Indices de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  ADD PRIMARY KEY (`idreserva`);
+  ADD PRIMARY KEY (`idreservas`),
+  ADD KEY `idcliente` (`idcliente`),
+  ADD KEY `idpropiedad` (`idpropiedad`);
 
 --
 -- Indices de la tabla `subasta`
 --
 ALTER TABLE `subasta`
-  ADD PRIMARY KEY (`idsubasta`);
+  ADD PRIMARY KEY (`idsubasta`),
+  ADD KEY `idpropiedad` (`idpropiedad`),
+  ADD KEY `pujaganadora` (`pujaganadora`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -214,19 +239,13 @@ ALTER TABLE `subasta`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `fecha`
---
-ALTER TABLE `fecha`
-  MODIFY `id_semana` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `hotsales`
@@ -250,51 +269,45 @@ ALTER TABLE `pujas`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idreserva` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idreservas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `subasta`
 --
 ALTER TABLE `subasta`
-  MODIFY `idsubasta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idsubasta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `fecha_propiedad`
---
-ALTER TABLE `fecha_propiedad`
-  ADD CONSTRAINT `fecha_propiedad_ibfk_1` FOREIGN KEY (`idfecha_propiedad`) REFERENCES `propiedades` (`id_propiedad`),
-  ADD CONSTRAINT `fecha_propiedad_ibfk_2` FOREIGN KEY (`idfecha_propiedad`) REFERENCES `fecha` (`id_semana`);
-
---
 -- Filtros para la tabla `hotsales`
 --
 ALTER TABLE `hotsales`
-  ADD CONSTRAINT `hotsales_ibfk_1` FOREIGN KEY (`idhotsale`) REFERENCES `fecha_propiedad` (`idfecha_propiedad`),
-  ADD CONSTRAINT `hotsales_ibfk_2` FOREIGN KEY (`idhotsale`) REFERENCES `clientes` (`id_cliente`);
+  ADD CONSTRAINT `hotsales_ibfk_1` FOREIGN KEY (`idpropiedad`) REFERENCES `propiedades` (`id_propiedad`),
+  ADD CONSTRAINT `hotsales_ibfk_2` FOREIGN KEY (`idcliente`) REFERENCES `clientes` (`id_cliente`);
 
 --
 -- Filtros para la tabla `pujas`
 --
 ALTER TABLE `pujas`
-  ADD CONSTRAINT `pujas_ibfk_1` FOREIGN KEY (`idpuja`) REFERENCES `clientes` (`id_cliente`),
-  ADD CONSTRAINT `pujas_ibfk_2` FOREIGN KEY (`idpuja`) REFERENCES `subasta` (`idsubasta`);
+  ADD CONSTRAINT `pujas_ibfk_2` FOREIGN KEY (`idcliente`) REFERENCES `clientes` (`id_cliente`),
+  ADD CONSTRAINT `pujas_ibfk_3` FOREIGN KEY (`idsubasta`) REFERENCES `subasta` (`idsubasta`);
 
 --
 -- Filtros para la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  ADD CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`idreserva`) REFERENCES `fecha_propiedad` (`idfecha_propiedad`),
-  ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`idreserva`) REFERENCES `clientes` (`id_cliente`);
+  ADD CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `clientes` (`id_cliente`),
+  ADD CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`idpropiedad`) REFERENCES `propiedades` (`id_propiedad`);
 
 --
 -- Filtros para la tabla `subasta`
 --
 ALTER TABLE `subasta`
-  ADD CONSTRAINT `subasta_ibfk_1` FOREIGN KEY (`idsubasta`) REFERENCES `fecha_propiedad` (`idfecha_propiedad`);
+  ADD CONSTRAINT `subasta_ibfk_1` FOREIGN KEY (`idpropiedad`) REFERENCES `propiedades` (`id_propiedad`),
+  ADD CONSTRAINT `subasta_ibfk_2` FOREIGN KEY (`pujaganadora`) REFERENCES `pujas` (`idpuja`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
