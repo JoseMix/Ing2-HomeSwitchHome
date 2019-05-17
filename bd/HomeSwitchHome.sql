@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-05-2019 a las 16:16:06
+-- Tiempo de generación: 17-05-2019 a las 16:28:47
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -34,7 +34,7 @@ CREATE TABLE `administradores` (
   `apellido` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `contraseña` varchar(100) NOT NULL,
-  `eliminado` tinyint(1) DEFAULT NULL
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `administradores` (
 --
 
 INSERT INTO `administradores` (`id_administrador`, `nombre`, `apellido`, `email`, `contraseña`, `eliminado`) VALUES
-(1, 'CARLOS', 'PEREZ', 'PEREZ@GMAIL.COM', '1234', NULL);
+(1, 'CARLOS', 'PEREZ', 'PEREZ@GMAIL.COM', '1234', 0);
 
 -- --------------------------------------------------------
 
@@ -58,8 +58,8 @@ CREATE TABLE `clientes` (
   `credito` int(11) NOT NULL,
   `tarjeta` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
   `vencimiento` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
-  `eliminado` tinyint(1) DEFAULT NULL,
-  `premium` tinyint(1) DEFAULT NULL,
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0',
+  `premium` tinyint(1) NOT NULL DEFAULT '0',
   `contrasena` varchar(200) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -68,19 +68,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `nombre`, `apellido`, `email`, `credito`, `tarjeta`, `vencimiento`, `eliminado`, `premium`, `contrasena`) VALUES
-(4, 'JOSE', 'PEREZ', 'PEREZ@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(5, 'JOSE', 'GOMEZ', 'GOMEZ@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(6, 'CARLOS', 'PEREZ', 'PEREZ@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(7, 'PEPE', 'CANOVAS', 'CANOVAS@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(8, 'CARLOS', 'MARQUEZ', 'MARQUEZ@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(9, 'MATIAS', 'MILETICH', 'MATI@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(10, 'SADADD', 'DADSDA', 'ASDADAS', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(11, 'LALAL', 'LALALA', 'ALALAL@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(12, 'PRUEBA2', 'APELLIDOPRUEBA', 'ASDSAD@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(13, 'ASDS', 'DSAD', 'ADSASDAS@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(14, 'SDFDS', 'DSFSD', 'SASA@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(15, 'MARIANO', 'MARTINELLI', 'MARIANO@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db'),
-(16, 'PEPE', 'SILVA', 'SILVA@GMAIL.COM', 0, '', '', NULL, NULL, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db');
+(5, 'JOSE', 'GOMEZ', 'GOMEZ@GMAIL.COM', 0, '', '', 0, 0, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db');
 
 -- --------------------------------------------------------
 
@@ -110,7 +98,7 @@ CREATE TABLE `propiedades` (
   `numero` int(11) NOT NULL,
   `descripcion` text NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `eliminado` tinyint(1) DEFAULT NULL,
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0',
   `foto` varchar(100) NOT NULL,
   `capacidad` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -120,8 +108,8 @@ CREATE TABLE `propiedades` (
 --
 
 INSERT INTO `propiedades` (`id_propiedad`, `provincia`, `localidad`, `calle`, `numero`, `descripcion`, `nombre`, `eliminado`, `foto`, `capacidad`) VALUES
-(1, 'BUENOS AIRES', 'CHASCOMUS', 'LALALA', 131, 'ASDASDAS', '', NULL, '', 0),
-(2, 'SALTA', 'SALTITA', 'PERGAMINO', 3, 'QWEQWEQW', '', NULL, '', 0);
+(1, 'BUENOS AIRES', 'CHASCOMUS', 'LALALA', 131, 'ASDASDAS', '', 0, '', 0),
+(2, 'SALTA', 'SALTITA', 'PERGAMINO', 3, 'QWEQWEQW', '', 0, '', 0);
 
 -- --------------------------------------------------------
 
