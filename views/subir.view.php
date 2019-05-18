@@ -21,6 +21,9 @@
 <div class="container">
     <form action="" class="formulario" method="post" enctype="multipart/form-data" id="formulario">  
 
+    <label for=nombre>Nombre De Propiedad</label>
+    <input type="text" id="nombre" name="nombre">
+
     <label for="provincia">Provincia</label>
     <input type="text" id="provincia" name="provincia">
 
@@ -41,6 +44,8 @@
 
     <input type="submit" class="btn_enviar btn btn-primary" id="btn_enviar" value="Subir Propiedad" onclick="subir()">        
     </form>
+
+    <?php echo $errores ?>
 </div>
 
 
