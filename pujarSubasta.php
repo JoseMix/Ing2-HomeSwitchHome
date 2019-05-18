@@ -7,6 +7,8 @@ if (!$conexion){
     die();
 }
 session_start();
+$_SESSION['id'] = 5;
+$_GET['ids'] = 1;
 
 if (isset($_SESSION['id'])){
 	if ($_SESSION['cliente']=='true'){
@@ -16,7 +18,8 @@ if (isset($_SESSION['id'])){
 	  $consul=$consul -> fetch();
 	  $preciobase=$consul['preciobase'];
    $consulta= $conexion -> query("SELECT credito FROM clientes WHERE id_cliente=".$_SESSION['id']);
-      $row=$consulta -> fetch();
+      $consulta->execute();   
+   $row=$consulta -> fetch();
 
       $puja=$conexion -> query("SELECT * FROM pujas WHERE idcliente=".$_SESSION['id']." AND idsubasta=".$_GET['ids']);
 

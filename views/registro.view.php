@@ -88,7 +88,7 @@
 								</div>
 								<?php endif; ?>
 								<div class="mt-4 text-center"> 
-								¿Ya tienes una cuenta? <a href="index.html"> Login</a>
+								¿Ya tienes una cuenta? <a href="index.php"> Login</a>
 								</div>
 								
 							</form>
