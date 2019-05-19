@@ -1,0 +1,24 @@
+.formulario label{
+    display: block;
+}
+
+body{
+    background-color:#92a8d1;
+}
+
+
+textarea{
+    width: 500px;
+    height: 250px;
+    resize: none;
+}
+
+
+.foto_mostrar{
+    width:100px;
+    height: 100px;
+}
+
+.form_registro input{
+    display:block;
+}
