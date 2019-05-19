@@ -2,48 +2,102 @@
 require 'conexion.php';
 $conexion = conexion();
 
-
+print_r ($_POST);
 if (!$conexion){
     die();
 }
+$errores = '';
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $preciobase = $_POST['preciobase'];
+    $fecha = $_POST['fecha']; //fecha reserva
+    $fechainicio1 = $_POST['inicio']; //inicio subasta
+    $fechafin = date('Y-m-d', strtotime($fechainicio1 . ' + 3 days')); //fin subasta
+    $idpropiedad = 1;  //idpropiedad debe ser pasado
+    
 
-$id_propiedad=$_GET[idpropiedad];
-$semana=$_GET[semana];
-$anio=_GET[anio];
-$precio
+    ///diferencia de dias desde hoy hasta la fecha de la subasta
+    $hoy=date_create(date('Y-m-d')); //fecha de hoy
+    $hasta=date_create($fecha);   
+    $diff=date_diff($hoy,$hasta);
+    $fechainicio= date_create($fechainicio1);
+    $diffsubasta=date_diff($fechainicio,$hasta);
+    $dias = $diff->format('%a');
+    $diassubasta = $diffsubasta->format('%a');
+    //////CALCULO DE AÑO Y SEMANA DE RESERVA
+    $date = new DateTime($_POST['fecha']);
+    $semana = $date->format('W');
+    $anio = $date->format('Y');
+
+    if(empty($preciobase) or empty($fecha)){
+        $errores .= '<li>Por Favor rellene todos los campos</li>';
+    }else{
+
+    if (($dias < 365) or ($diassubasta < 182)){
+        $errores .= "<li>Fecha de subasta Incorrecta</li>";
+        }else{
+            $conexion = conexion();    
+            $statement=$conexion->prepare('SELECT * FROM subasta WHERE idpropiedad = :idpropiedad AND semana= :semana AND anio= :anio LIMIT 1' );
+            $statement->execute(array(
+                ':idpropiedad' => $idpropiedad,
+                ':semana' =>$semana,
+                ':anio' =>$anio
+                ));
+            $resultado = $statement->fetch();
+            if($resultado != false){
+                $errores .= '<li>Propiedad Ya Subastada en esa fecha</li>';
+            }
+        }
+            if ($errores == ''){
+                $statement = $conexion->prepare('INSERT INTO subasta (preciobase, fechainicio, fechafin, idpropiedad, semana, anio) 
+                VALUES (:preciobase, :fechainicio, :fechafin, :idpropiedad, :semana, :anio)');
+                $statement->execute(array(
+                       ':preciobase' => $preciobase,
+                        ':fechainicio' => $fechainicio1,
+                        ':fechafin' => $fechafin,
+                        ':idpropiedad' => $idpropiedad,
+                        ':semana' => $semana,
+                        ':anio' => $anio
+                    )); 
+                }
+            
+            }
+
+
+    
 
 
 
 
-$idsemana = $conexion->prepare("SELECT id_semana FROM fecha WHERE semana=:semana AND anio=:anio");
-$consulta_fecha->execute();
-$consulta_fecha = $consulta_fecha->fetchAll();
-
-$id_semana_propiedad = $conexion->prepare("SELECT idfecha_propiedad FROM propiedades INNER JOIN fecha 
+        }
 
 
 
+
+    
 
 
 
 
 
 
-SELECT * 
-FROM table1 
-INNER JOIN table2
-      ON table1.primaryKey=table2.table1Id
-INNER JOIN table3
-      ON table1.primaryKey=table3.table1Id
 
 
 
 
 
 
-                                        ");
+
+
 
 
 
 require 'views/iniciarsub.view.php';
+
+
+
+
+
+
 ?>
+
+
