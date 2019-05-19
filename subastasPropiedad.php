@@ -18,7 +18,7 @@
   }
 ?>
 <body>
-  <a href="detalle.php?idpropiedad=<?php echo $_GET['idpropiedad'] ?>">Volver al detalle</a>
+  <a href="detallePropiedad.php?idpropiedad=<?php echo $_GET['idpropiedad'] ?>">Volver al detalle</a>
     <div class=" ">
 
     <h1>Subastas Activas </h1>
