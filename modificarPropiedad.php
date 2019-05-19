@@ -6,7 +6,6 @@ $conexion = conexion();
 if (!$conexion){
     die();
 }
-
 $propiedades = $conexion->prepare("SELECT * FROM propiedades WHERE id_propiedad=" .$_GET['idpropiedad']);
 $propiedades->execute();
 $propiedades = $propiedades->fetch();

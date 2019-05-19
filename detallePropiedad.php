@@ -65,8 +65,7 @@ $propiedades = $propiedades->fetch();
 
                     <a class="btn btn-warning" href="modificarPropiedad.php?idpropiedad=<?php echo $propiedades['id_propiedad']?>">Modificar Propiedad</a>
                     
-                    <a class="btn btn-danger" href="bajaPropiedad.php?idpropiedad=<?php echo $propiedades['
-                        id_propiedad']?>">Eliminar Propiedad</a>
+                    <a class="btn btn-danger" href="bajaPropiedad.php?idpropiedad=<?php echo $propiedades['id_propiedad']?>">Eliminar Propiedad</a>
                 
                  <?php else : ?>
                

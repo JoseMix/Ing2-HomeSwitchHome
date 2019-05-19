@@ -4,11 +4,17 @@ $conexion = conexion();
 if (!$conexion){
     die();
 }
+
+//propiedad pasada desde detalle
+$propiedad = ($_GET['idpropiedad']); 
+
 session_start();
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['nombre'])) {
 	if (($_SESSION['administrador'])=='true'){
-        $conexion ->query("UPDATE propiedades SET eliminado=1 WHERE id_propiedad=".$_GET['idpropiedad']);
+    echo print_r($_GET['idpropiedad']);    
+    $conexion ->query("UPDATE propiedades SET eliminado=1 WHERE id_propiedad=$propiedad");
           header('Location:listado.php');
+          
    }
    else{
    	  
@@ -19,5 +25,6 @@ else{
 	
 	header('Location:login.php');
 }
+
 ?>
 
