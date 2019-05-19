@@ -3,7 +3,7 @@ session_start();
 require 'conexion.php';
 $conexion = conexion();
 
-print_r($_SESSION);
+//print_r($_SESSION);
 if (!$conexion){
     die();
 }
