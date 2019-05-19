@@ -2,6 +2,9 @@
    include_once 'conexion.php';
    $conexion=conexion();
    $idsub=$_GET['idsub'];
+   $idprop= $conexion -> query("SELECT idpropiedad FROM subasta WHERE idsubasta=".$idsub);
+   $idprop= $idprop ->fetch();
+   $idprop=$idprop['idpropiedad'];
    session_start();
 
    if (isset($_SESSION['id'])){
@@ -15,7 +18,7 @@
          	$consulta=$consulta -> fetch();
          	$preciobase=$consulta['preciobase'];
          	if ($_POST['monto'] < $preciobase){
-                header('Location:pujar.php?idsub='.$idsub.'&error=Debe ingresar un monto mayor al monto base');
+                header('Location:pujar.php?idpropiedad='.$idprop.'&idsub='.$idsub.'&error=Debe ingresar un monto mayor al monto base');
 
          	}
          	else{
@@ -24,11 +27,12 @@
                $monto=$_POST['monto'];
                if ($hizopuja) { 
                     $conexion -> query("UPDATE pujas SET importepuja=".$monto." WHERE idsubasta=".$_GET['idsub']);
-                    header('Location:detallePropiedad.php');
+
+                    header('Location:pujar.php?idpropiedad='.$idprop.'&idsub='.$idsub);
                }
                else{
                    $conexion -> query("INSERT INTO pujas (importepuja, idcliente, idsubasta) values (".$monto.",".$_SESSION['id'].",".$_GET['idsub'].")");
-                   header('Location:detallePropiedad.php');
+                   header('Location:pujar.php?idpropiedad='.$idprop.'&idsub='.$idsub);
                }
 
          	}
@@ -37,12 +41,12 @@
           else
           {
           	
-          	header('Location:pujar.php?idsub='.$idsub.'&error=No posee creditos suficientes');
+          	header('Location:pujar.php?idpropiedad='.$idprop.'&idsub='.$idsub.'&error=No posee creditos suficientes');
           }
 
          }
          else{
-          header('Location:pujar.php?idsub='.$idsub.'&error=Debe ser un cliente para poder pujar');
+          header('Location:pujar.php?idpropiedad='.$idprop.'&idsub='.$idsub.'&error=Debe ser un cliente para poder pujar');
          
          }
 
