@@ -1,19 +1,22 @@
 <?php
 require 'conexion.php';
 $conexion = conexion();
-
-print_r ($_POST);
+//print_r ($_GET);
 if (!$conexion){
     die();
 }
+session_start();
+
+
 $errores = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $preciobase = $_POST['preciobase'];
     $fecha = $_POST['fecha']; //fecha reserva
     $fechainicio1 = $_POST['inicio']; //inicio subasta
     $fechafin = date('Y-m-d', strtotime($fechainicio1 . ' + 3 days')); //fin subasta
-    $idpropiedad = 1;  //idpropiedad debe ser pasado
-    
+   //////////////////////////////////////////////////
+    $idpropiedad = $_GET['idpropiedad'];  //idpropiedad debe ser pasado
+  //////////////////////////////////////////////////  
 
     ///diferencia de dias desde hoy hasta la fecha de la subasta
     $hoy=date_create(date('Y-m-d')); //fecha de hoy
@@ -33,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }else{
 
     if (($dias < 365) or ($diassubasta < 182)){
-        $errores .= "<li>Fecha de subasta Incorrecta</li>";
+        $errores .= "<li>Fecha de subasta o Reserva incorrecta</li>";
         }else{
             $conexion = conexion();    
             $statement=$conexion->prepare('SELECT * FROM subasta WHERE idpropiedad = :idpropiedad AND semana= :semana AND anio= :anio LIMIT 1' );
@@ -51,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $statement = $conexion->prepare('INSERT INTO subasta (preciobase, fechainicio, fechafin, idpropiedad, semana, anio) 
                 VALUES (:preciobase, :fechainicio, :fechafin, :idpropiedad, :semana, :anio)');
                 $statement->execute(array(
-                       ':preciobase' => $preciobase,
+                        ':preciobase' => $preciobase,
                         ':fechainicio' => $fechainicio1,
                         ':fechafin' => $fechafin,
                         ':idpropiedad' => $idpropiedad,
@@ -62,13 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             
             }
 
-
-    
-
-
-
-
         }
+
+
 
 
 

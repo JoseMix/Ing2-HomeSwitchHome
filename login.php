@@ -28,12 +28,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         if($resultado !== false){
            $_SESSION['nombre'] = $resultado['nombre'];
            //$nombre = $resultado['nombre']; 
-           header('Location: contenido.php');
+           header('Location: listado.php');
         }else{
-            $errores .='<li>E-mail o contraseña erroneos</li>';
+            $conexion = conexion();    
+            $statement=$conexion->prepare('SELECT * FROM administradores WHERE email = :email AND contrasena = :contrasena');
+            $statement->execute(array(
+                ':email' => $email,
+                ':contrasena' =>$password
+            ));
+            $resultado = $statement->fetch();
+            if($resultado !== false){
+                $_SESSION['nombre'] = $resultado['nombre'];
+                $_SESSION['administrador']="true";
+                //$nombre = $resultado['nombre']; 
+                header('Location: panelControlAdmin.php');    
+
+            }else{
+                $errores .='<li>E-mail o contraseña erroneos</li>';
         }
      }
-
+    }
 }
 require 'views/login.view.php';
 
