@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-05-2019 a las 16:28:47
+-- Tiempo de generación: 19-05-2019 a las 19:30:51
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -33,7 +33,7 @@ CREATE TABLE `administradores` (
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `contraseña` varchar(100) NOT NULL,
+  `contrasena` varchar(200) NOT NULL,
   `eliminado` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,8 +41,8 @@ CREATE TABLE `administradores` (
 -- Volcado de datos para la tabla `administradores`
 --
 
-INSERT INTO `administradores` (`id_administrador`, `nombre`, `apellido`, `email`, `contraseña`, `eliminado`) VALUES
-(1, 'CARLOS', 'PEREZ', 'PEREZ@GMAIL.COM', '1234', 0);
+INSERT INTO `administradores` (`id_administrador`, `nombre`, `apellido`, `email`, `contrasena`, `eliminado`) VALUES
+(3, 'Carlos', 'Paez', 'admin@gmail.com', '1234', 0);
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `nombre`, `apellido`, `email`, `credito`, `tarjeta`, `vencimiento`, `eliminado`, `premium`, `contrasena`) VALUES
-(5, 'JOSE', 'GOMEZ', 'GOMEZ@GMAIL.COM', 0, '', '', 0, 0, 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db');
+(19, 'CARLOS', 'PEREZ', 'PEREZ@GMAIL.COM', 0, '', '', 0, 0, '1234');
 
 -- --------------------------------------------------------
 
@@ -99,17 +99,16 @@ CREATE TABLE `propiedades` (
   `descripcion` text NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `eliminado` tinyint(1) NOT NULL DEFAULT '0',
-  `foto` varchar(100) NOT NULL,
-  `capacidad` smallint(6) NOT NULL
+  `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `propiedades`
 --
 
-INSERT INTO `propiedades` (`id_propiedad`, `provincia`, `localidad`, `calle`, `numero`, `descripcion`, `nombre`, `eliminado`, `foto`, `capacidad`) VALUES
-(1, 'BUENOS AIRES', 'CHASCOMUS', 'LALALA', 131, 'ASDASDAS', '', 0, '', 0),
-(2, 'SALTA', 'SALTITA', 'PERGAMINO', 3, 'QWEQWEQW', '', 0, '', 0);
+INSERT INTO `propiedades` (`id_propiedad`, `provincia`, `localidad`, `calle`, `numero`, `descripcion`, `nombre`, `eliminado`, `foto`) VALUES
+(5, 'TUCUMAN', 'EL TALAR', 'ACACIAS', 4, 'HERMOSA CASA DE CAMPO, CERCA DE LA LADERA DE UNA COLINA.', 'LA CUEVITA', 0, 'coconut-trees-contemporary-daylight-1643389.jpg'),
+(6, 'SALTA', 'PRUEBA', 'ESPERANZA', 2, 'CASA ESTILO CAMPESTRE CERCA DEL RIO.', 'LA MONTAÃ±ITA', 0, 'coconut-trees-contemporary-daylight-1643389.jpg');
 
 -- --------------------------------------------------------
 
@@ -151,19 +150,21 @@ CREATE TABLE `subasta` (
   `pujaganadora` int(11) DEFAULT NULL,
   `idpropiedad` int(11) NOT NULL,
   `inactivo` tinyint(1) NOT NULL DEFAULT '0',
-  `semana` smallint(6) NOT NULL
+  `semana` smallint(6) NOT NULL,
+  `anio` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `subasta`
 --
 
-INSERT INTO `subasta` (`idsubasta`, `preciobase`, `fechainicio`, `fechafin`, `pujaganadora`, `idpropiedad`, `inactivo`, `semana`) VALUES
-(1, '40000', '2040-00-00', '2019-12-30', NULL, 1, 0, 1),
-(2, '40000', '2040-00-00', '2020-01-20', NULL, 1, 0, 4),
-(3, '40000', '2040-00-00', '2020-01-20', NULL, 1, 0, 4),
-(4, '40000', '2019-12-30', '2019-12-31', NULL, 1, 0, 1),
-(5, '10000', '2019-12-02', '2019-12-05', NULL, 1, 0, 49);
+INSERT INTO `subasta` (`idsubasta`, `preciobase`, `fechainicio`, `fechafin`, `pujaganadora`, `idpropiedad`, `inactivo`, `semana`, `anio`) VALUES
+(6, '40000', '2020-05-04', '2020-05-07', NULL, 5, 0, 53, 2021),
+(7, '40000', '2020-05-04', '2020-05-07', NULL, 5, 0, 2, 2021),
+(9, '20000', '2019-09-23', '2019-09-26', NULL, 5, 0, 26, 2020),
+(10, '40000', '2019-11-29', '2019-12-02', NULL, 5, 0, 28, 2020),
+(11, '30000', '2019-10-14', '2019-10-17', NULL, 6, 0, 27, 2020),
+(12, '14000', '2020-06-01', '2020-06-04', NULL, 6, 0, 18, 2022);
 
 --
 -- Índices para tablas volcadas
@@ -227,13 +228,13 @@ ALTER TABLE `subasta`
 -- AUTO_INCREMENT de la tabla `administradores`
 --
 ALTER TABLE `administradores`
-  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `hotsales`
@@ -245,7 +246,7 @@ ALTER TABLE `hotsales`
 -- AUTO_INCREMENT de la tabla `propiedades`
 --
 ALTER TABLE `propiedades`
-  MODIFY `id_propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_propiedad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `pujas`
@@ -263,7 +264,7 @@ ALTER TABLE `reservas`
 -- AUTO_INCREMENT de la tabla `subasta`
 --
 ALTER TABLE `subasta`
-  MODIFY `idsubasta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idsubasta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
