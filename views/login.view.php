@@ -38,7 +38,7 @@
 									</div>
 								</div>
 
-								<div class="form-group">
+						<!--		<div class="form-group">
 									<div class="custom-checkbox custom-control">
 										<input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
 										<label for="agree" class="custom-control-label">Acepto los <a href="#"> terminos y condiciones</a></label>
@@ -46,8 +46,8 @@
 											Debes aceptar los terminos y condiciones
 										</div>
 									</div>
-								</div>
-
+									</div>
+						--> 
 								<div class="form-group m-0">
 									<button type="submit" class="btn btn-primary btn-block" onclick="login.registro()">
 										Identifiquese

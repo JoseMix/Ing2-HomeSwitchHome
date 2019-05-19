@@ -7,9 +7,9 @@ var localidad = formulario.localidad.value;
 var calle = formulario.calle.value;
 var numero = formulario.numero.value;
 var descripcion = formulario.descripcion.value;
-var parametros ='provincia=' + provincia + '&localidad=' + localidad + '&calle=' + calle + '&numero=' + numero + '&descripcion=' + descripcion;
-if (provincia == '' || localidad == '' || calle == '' || numero == '' || descripcion == '') {
-   alert("Campos vacios");
+var nombre = formulario.nombre.value;
+var parametros ='provincia=' + provincia + '&localidad=' + localidad + '&calle=' + calle + '&numero=' + numero + '&descripcion=' + descripcion + '&nombre=' + nombre;
+if (provincia == '' || localidad == '' || calle == '' || numero == '' || descripcion == '' || nombre == '') {
    event.preventDefault();
    }else{
       $.ajax({

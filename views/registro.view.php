@@ -65,7 +65,7 @@
 								</div>
 
 
-								<div class="form-group">
+						<!--		<div class="form-group">
 									<div class="custom-checkbox custom-control">
 										<input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
 										<label for="agree" class="custom-control-label">Acepto los <a href="#"> terminos y condiciones</a></label>
@@ -74,7 +74,7 @@
 										</div>
 									</div>
 								</div>
-
+						-->
 								<div class="form-group m-0">
 									<button type="submit" class="btn btn-primary btn-block" onclick="registro()">
 										Registrar
@@ -88,7 +88,7 @@
 								</div>
 								<?php endif; ?>
 								<div class="mt-4 text-center"> 
-								¿Ya tienes una cuenta? <a href="index.html"> Login</a>
+								¿Ya tienes una cuenta? <a href="index.php"> Login</a>
 								</div>
 								
 							</form>

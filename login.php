@@ -31,6 +31,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
               $_SESSION['administrador']="true";
               $_SESSION['cliente']="false";
            //$nombre = $resultado['nombre']; 
+<<<<<<< HEAD
+           header('Location: listado.php');
+        }else{
+            $conexion = conexion();    
+            $statement=$conexion->prepare('SELECT * FROM administradores WHERE email = :email AND contrasena = :contrasena');
+            $statement->execute(array(
+                ':email' => $email,
+                ':contrasena' =>$password
+            ));
+            $resultado = $statement->fetch();
+            if($resultado !== false){
+                $_SESSION['nombre'] = $resultado['nombre'];
+                $_SESSION['administrador']="true";
+                //$nombre = $resultado['nombre']; 
+                header('Location: panelControlAdmin.php');    
+
+            }else{
+                $errores .='<li>E-mail o contraseña erroneos</li>';
+        }
+     }
+    }
+}
+=======
               header('Location: contenido.php');
             }
             else{
@@ -61,6 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
      }
 
 
+>>>>>>> desarrollo
 require 'views/login.view.php';
 
 
