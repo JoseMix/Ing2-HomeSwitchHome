@@ -17,6 +17,8 @@
 <?php echo "Hola " . $_SESSION['nombre'];?>
 
 <a href="cerrar.php">Cerrar Sesion</a>
+<a href="listado.php">LISTADO PROPIEDADES</a>
+
 
 
 
