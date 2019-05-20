@@ -1,0 +1,66 @@
+.cuerpo{
+	background: white;
+}
+.propiedades{
+	color:black;
+}
+.imagen{
+	width: 35%;
+	height: 35%;
+}
+.card{
+	color:lightblue ;
+	margin: auto;
+	
+}
+.img-fluid{
+	width: 40%;
+	
+	margin-left: 32%;
+}
+h2,h6,h5{
+	text-align: center;
+	font-family: helvetica;
+}
+.textarea{
+	width: 100%;
+	height: 50%;
+	border-color: lightblue;
+
+}
+.formularioSubir {
+	margin-left: 32%;
+}
+
+.formularioSubir,input{ 
+	width: 40%;
+	border-color: lightblue;
+
+}
+.seleccionaFoto{
+	width: 100%;
+	border-top: blue;
+}
+.centrar{
+	text-align: center;
+}
+
+.card-header{
+	text-align: center;
+}
+.centrarBoton{
+	margin-left: 42%;
+	
+}
+.panel{
+	margin-left: 35%;
+	text-align: center;
+	width: 30%;
+}
+.margenBoton{
+	display: inline;
+}
+header{
+	margin:1%;
+}
+
