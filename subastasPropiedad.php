@@ -22,10 +22,14 @@
       <a href="listado.php"><img src="img/logos/HSH-Complete.svg" class="img-fluid" alt="Logotipo de homeSwitchHome"></a>
       <br><br>
     </header>
- 
+ <!--query que imprime el nombre de la propiedad en la que estamos -->
     <div class=" ">
+    <?php $query = $conexion-> query("SELECT * FROM propiedades WHERE id_propiedad=".$_GET['idpropiedad']); 
+      $query = $query-> fetch();
+    
+    ?>
 
-    <h4 class="card-header" >Subastas Activas </h4>
+    <h4 class="card-header" >Subastas Activas para la Propiedad: <?php echo $query['nombre']?> </h4>
     <br><br>
    
     
@@ -40,7 +44,12 @@
    while ($subasta= $existesubasta-> fetch()) { ?>
 
     <div class="centrar">
-     <h3>Subasta de la semana : <?php echo $subasta['semana'] ?></h3>
+    <?php 
+    $fechaordenada = date("d-m-Y", strtotime($subasta['fechareserva']));
+    $fechafinordenada = date('d-m-Y', strtotime($fechaordenada . ' + 7 days'));
+    
+    ?>
+     <h3>Subasta de la Fecha : <?php echo $fechaordenada ?> Hasta: <?php echo $fechafinordenada ?> </h3>
      <a class="btn btn-primary" href="pujar.php?idsub=<?php echo $subasta['idsubasta'] ?>&idpropiedad=<?php echo $_GET['idpropiedad'] ?>"> Ir a Ofertar</a>
      
     <?php } ?>

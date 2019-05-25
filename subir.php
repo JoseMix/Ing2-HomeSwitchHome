@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_FILES)) {
             ':nombre' => ltrim($_POST['nombre'])
             ));
              $row = $stm->fetch();
-            if($row){
+            if($row > 0){
                 $errores .= 'La propiedad que trata de dar de alta, ya existe en el sistema';
             }else{
                 $statement = $conexion->prepare('

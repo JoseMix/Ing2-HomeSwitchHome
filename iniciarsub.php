@@ -17,10 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
    //////////////////////////////////////////////////
     $idpropiedad = $_GET['idpropiedad'];  //idpropiedad debe ser pasado
   //////////////////////////////////////////////////  
-
+    
     ///diferencia de dias desde hoy hasta la fecha de la subasta
     $hoy=date_create(date('Y-m-d')); //fecha de hoy
     $hasta=date_create($fecha);   
+
+
+
+    $fechareserva = date('Y-m-d',strtotime($fecha));
+    
+    
+    
+    
+    
     $diff=date_diff($hoy,$hasta);
     $fechainicio= date_create($fechainicio1);
     $diffsubasta=date_diff($fechainicio,$hasta);
@@ -51,15 +60,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             }
         }
             if ($errores == ''){
-                $statement = $conexion->prepare('INSERT INTO subasta (preciobase, fechainicio, fechafin, idpropiedad, semana, anio) 
-                VALUES (:preciobase, :fechainicio, :fechafin, :idpropiedad, :semana, :anio)');
+                $statement = $conexion->prepare('INSERT INTO subasta (preciobase, fechainicio, fechafin, idpropiedad, semana, anio, fechareserva) 
+                VALUES (:preciobase, :fechainicio, :fechafin, :idpropiedad, :semana, :anio, :fechareserva)');
                 $statement->execute(array(
                         ':preciobase' => $preciobase,
                         ':fechainicio' => $fechainicio1,
                         ':fechafin' => $fechafin,
                         ':idpropiedad' => $idpropiedad,
                         ':semana' => $semana,
-                        ':anio' => $anio
+                        ':anio' => $anio,
+                        ':fechareserva' =>$fechareserva
                     )); 
                 }
             
